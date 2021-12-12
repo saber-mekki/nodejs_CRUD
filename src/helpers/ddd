@@ -1,0 +1,39 @@
+ const client = await pool.connect();
+
+    const sql = "SELECT schema , nom  FROM cesaradmin.franchises WHERE id = $1";
+    try {
+      const { rows } = await client.query(sql, [franchiseId]);
+      rows.map((el: any) => {
+        console.log({ el });
+        let obj: FranchiseType = {
+          schema: el.schema,
+          name: el.nom,
+        };
+        console.log({ obj });
+        franchisesSchemas.push(obj);
+      });
+      // } finally {
+      //   client.off;
+      // }
+    } finally {
+    }
+  });
+
+    //     const sql = "SELECT schema , nom  FROM cesaradmin.franchises WHERE id = $1";
+    //     try {
+    //       const { rows } = await client.query(sql, [franchiseId]);
+    //       rows.map((el: any) => {
+    //         console.log({ el });
+    //         let obj: FranchiseType = {
+    //           schema: el.schema,
+    //           name: el.nom,
+    //         };
+    //         console.log({ obj });
+    //         franchisesSchemas.push(obj);
+    //       });
+    //     } catch {
+    //       console.error();
+    //     } finally {
+    //       client.off;
+    //     }
+    //   });
