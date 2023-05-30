@@ -1,9 +1,9 @@
 import { Application } from "express";
-import CommandeRouter from "./CommandeRouter";
 import path from "path";
 import swaggerJsDoc from "swagger-jsdoc";
 import swaggerUI from "swagger-ui-express";
 import cors from "cors";
+import  Categories  from "./Categories";
 
 export default (app: Application) => {
   const options = {
@@ -23,7 +23,11 @@ export default (app: Application) => {
     },
     apis: [
       `${__dirname}/*${path.extname(path.basename(__filename))}`,
+      `${__dirname}/*/*${path.extname(path.basename(__filename))}`,
       `${__dirname}/*/*/*${path.extname(path.basename(__filename))}`,
+      `${__dirname}/*/*/*/*${path.extname(path.basename(__filename))}`,
+      `${__dirname}/*/*/*/*/*${path.extname(path.basename(__filename))}`,
+      `${__dirname}/*/*/*/*/*/*${path.extname(path.basename(__filename))}`,
     ],
   };
   const specs = swaggerJsDoc(options);
@@ -33,5 +37,5 @@ export default (app: Application) => {
     res.json({ message: "API Running ! " });
   });
 
-  app.use("/api/v1/", [CommandeRouter]);
+  app.use("/api/v1/", [Categories]);
 };

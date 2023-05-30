@@ -1,17 +1,16 @@
 import express from "express";
-import { postUser } from "../controllers/postUser";
-import { getUser } from "../controllers/getUser";
-import { deleteUser } from "../controllers/deleteUser";
 
-const routedr = express.Router();
+import { getCategoriesController } from "../../controllers/categories";
+
+const router = express.Router();
 
 
 /**
  * @swagger
- * /pushCossssssmmand:
+ * /categories:
  *   post:
- *     summary: post User
- *     tags: [User]
+ *     summary: return categories
+ *     tags: [Categories]
  *     responses:
  *       200:
  *         description: ok
@@ -33,8 +32,8 @@ const routedr = express.Router();
  *                type: object
  *
  */
-routedr.route("/pushCommand").post(postUser);
+router.route("/categories").post(getCategoriesController);
 
 
 
-export default routedr;
+export default router;

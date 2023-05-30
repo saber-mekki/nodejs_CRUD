@@ -2,9 +2,10 @@ import pool from "../database";
 import { Request, Response } from "express";
 
 export const postUser = async (req: Request, res: Response) => {
+
   try {
     await pool.query(
-      "INSERT INTO test.saber(nom, email, num_tel,age) VALUES ('saber','mekk@gmail',111,12)"
+      "INSERT INTO kathya.test(id) VALUES ('saber')"
     );
     res.status(200).send("ok");
   } catch (error) {
